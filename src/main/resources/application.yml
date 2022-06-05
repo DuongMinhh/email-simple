@@ -1,0 +1,22 @@
+# Port
+server:
+    port: 8080
+spring:
+    # Email configuration
+    mail:
+        host: smtp.gmail.com
+        port: 587
+#        username: --> Enter your gmail
+#        password: --> Enter your Google App Password here
+        properties:
+            mail:
+                smtp.auth: true
+                smtp.starttls.enable: true
+    # Database
+#    datasource:
+#        driver-class-name: org.postgresql.Driver
+#        url: jdbc:postgresql://localhost:5432/test-email?schemas=public
+#        username: postgres
+#        password: 123456
+
+

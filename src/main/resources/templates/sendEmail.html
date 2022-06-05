@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Hello Spring Boot and Thymeleaf</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>WELCOME TO EMAIL APPLICATION</h1>
+    <form th:action="@{/index/send}" method="post" th:object="${email}">
+        <label>Enter the email send to:</label>
+        <input type="text" name="to">
+        <br>
+        <label>Enter the email subject:</label>
+        <input type="text" name="subject">
+        <br>
+        <label>Enter the content</label>
+        <textarea name="content" placeholder="Enter content..."></textarea>
+        <br>
+
+        <input type="submit" value="SEND">
+    </form>
+
+</body>
+</html>
