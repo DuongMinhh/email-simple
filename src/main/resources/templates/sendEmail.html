@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>WELCOME TO EMAIL APPLICATION</h1>
-    <form th:action="@{/index/send}" method="post" th:object="${email}">
+    <form th:action="@{/index/send}" method="post" th:object="${email}" enctype="multipart/form-data">
         <label>Enter the email send to:</label>
         <input type="text" name="to">
         <br>
@@ -15,6 +15,9 @@
         <br>
         <label>Enter the content</label>
         <textarea name="content" placeholder="Enter content..."></textarea>
+        <br>
+        <label>Add attachment</label>
+        <input type="file" name="file">
         <br>
 
         <input type="submit" value="SEND">

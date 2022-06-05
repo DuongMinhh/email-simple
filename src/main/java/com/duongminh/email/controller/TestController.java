@@ -7,6 +7,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.duongminh.email.model.EmailModel;
 
+import javax.mail.MessagingException;
+import java.util.Objects;
+
 @Controller
 @RequestMapping("/index")
 public class TestController {
@@ -25,9 +28,13 @@ public class TestController {
     }
 
     @PostMapping(value = {"/send", "/send/"})
-    public String sendEmail(@ModelAttribute EmailModel email, Model model) {
+    public String sendEmail(@ModelAttribute EmailModel email, Model model) throws MessagingException {
 
-        emailService.sendSimpleMessage(email.getTo(), email.getSubject(), email.getContent());
+        if (Objects.nonNull(email.getFile())) {
+            emailService.sendEmailWithAttachment(email.getTo(), email.getSubject(), email.getContent(), email.getFile());
+        } else {
+            emailService.sendSimpleMessage(email.getTo(), email.getSubject(), email.getContent());
+        }
 
         model.addAttribute("name", email.getTo());
         return "success.html";
